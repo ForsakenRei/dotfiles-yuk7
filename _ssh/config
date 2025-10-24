@@ -2,3 +2,9 @@ Host *
     Compression yes
     ServerAliveInterval 60
     TCPKeepAlive yes
+
+# SSH over Session Manager
+Host i-* mi-*
+    ProxyCommand sh -c "aws ssm start-session --target %h --document-name AWS-StartSSHSession --parameters 'portNumber=%p'"
+    User ec2-user
+    
