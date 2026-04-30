@@ -17,8 +17,14 @@ map! <esc>OD <Left>
 set backspace=start,eol,indent
 
 
-let $LANG = "en"
-set clipboard=unnamed,unnamedplus,autoselect
+if has('clipboard')
+    if has('unnamedplus')
+        set clipboard=unnamedplus
+    else
+        set clipboard=unnamed,autoselect
+    endif
+endif
+
 syntax enable
 set cindent
 set autoindent
